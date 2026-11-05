@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 20 15% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 12%;
+    --primary: 20 15% 15%;
+    --primary-foreground: 40 33% 97%;
+    --secondary: 30 20% 93%;
+    --secondary-foreground: 20 15% 15%;
+    --muted: 30 15% 90%;
+    --muted-foreground: 20 8% 45%;
+    --accent: 340 25% 88%;
+    --accent-foreground: 340 40% 25%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 40 33% 97%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 20 15% 15%;
+    --radius: 0.25rem;
+
+    --success: 142 30% 45%;
+    --success-foreground: 40 33% 97%;
+    --warning: 35 80% 55%;
+    --warning-foreground: 20 15% 15%;
+
+    --chart-1: 340 40% 55%;
+    --chart-2: 30 30% 50%;
+    --chart-3: 200 30% 45%;
+    --chart-4: 45 60% 55%;
+    --chart-5: 15 50% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+  .animate-slide-in-right {
+    animation: slide-in-right 0.4s ease-out forwards;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--secondary)) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
